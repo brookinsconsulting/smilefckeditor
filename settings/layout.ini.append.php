@@ -1,4 +1,5 @@
-#?ini charset="iso-8859-1"?
+<?php /* #?ini charset="utf-8"?
+
 # eZ publish configuration file for layout module
 #
 # NOTE: It is not recommended to edit this files directly, instead
@@ -26,3 +27,4 @@ PageLayout=print_pagelayout.tpl
 [mediabrowser]
 PageLayout=pagelayout_mediabrowser.tpl
 
+*/ ?>

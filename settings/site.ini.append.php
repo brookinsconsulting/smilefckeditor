@@ -1,9 +1,9 @@
-<?php /* #?ini charset="iso-8859-1"?
+<?php /* #?ini charset="utf-8"?
+
 [RegionalSettings]
 #TranslationExtensions[]=smilefckeditor
 
 [TemplateSettings]
 ExtensionAutoloadPath[]=smilefckeditor
-* 
-*/
-?>
+ 
+*/ ?>
