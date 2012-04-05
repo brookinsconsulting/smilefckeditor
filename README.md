@@ -1,77 +1,81 @@
-SmileFCKeditor - Extension qui intègre FCKeditor
-Par Maxime THOMAS <maxime.thomas@smile.fr>- © 2006 Smile
+SmileFCKeditor - Extension that integrates FCKeditor
+====================================================
+
+* By Maxime THOMAS <maxime.thomas@smile.fr> - © 2006 Smile
+
 
 Description
 -----------
-Cette extension propose une surcharge du datatype HTMLFields qui permet d'afficher une zone de texte FCKeditor.
-Elle dispose nottament de deux plugins FCK :
-- SmileeZimage : Sélection d'une image dans la médiathèque eZpublish.
-- SmileeZlink : Sélection d'un contenu dans la médiathèque eZpublish.
+This extension provides an overload HTMLFields datatype that displays a text box FCKeditor.
+It has two plugins Solicitating FCK:
+- SmileeZimage: Selecting an image in the media eZpublish.
+- SmileeZlink: Selecting a content in the media eZpublish.
 
 
-Pré-requis
+Prerequisites
 ----------
-Il faut que le navigateur supporte le javascript.
+Requires that the browser supports javascript.
 
-Contraintes
+Constraints
 -----------
-Le nom de l'extension doit rester smilefckeditor.
-Il faut que l'option javascript soit activée pour que la barre d'outils fck soit activée.
+The extension name should remain smilefckeditor.
+It is necessary that javascript is enabled for the toolbar fck is enabled.
 
 Installation
 ------------
 
-1 - Placer le répertoire "smilefckeditor" dans le répertoire "extension"
-2 - Modifier le fichier httpd.conf du repertoire conf dans le répertoire d'installation d'Apache.
-Dans les règles de réécriture dédiées à eZpublish, ajouter les lignes suivantes :
+1 - Place the directory "smilefckeditor" in the "extension"
+2 - Modify httpd.conf in conf directory of the installation directory of Apache.
+In the rewrite rules dedicated to eZpublish, add the following lines:
 
-Rewriterule ^/extension/smilefckeditor/javascript/.*                							- [L]
-Rewriterule ^/extension/smilefckeditor/fckeditor/.* 				             				- [L]
+RewriteRule ^ / extension / smilefckeditor / javascript /. * - [L]
+RewriteRule ^ / extension / smilefckeditor / fckeditor /. * - [L]
 
-3 - Activer l'extension (dans le site.ini ou dans le back-office)
+3 - Enable the extension (in site.ini or in the back office)
 
-Lancement
+Launching
 ---------
-Le template du datatype est appelé automatiquement dans le back office, donc il n'y a rien à lancer : le
-FCK est chargé dynamiquement.
+The template of the datatype is called automatically in the back office, so there is nothing to run: the
+FCK is dynamically loaded.
 
 Configuration
 -------------
-Pour configurer FCK, il suffit d'éditer le fichier :
+To configure FCK, just edit the file:
 
-smilefckeditor/fckeditor/fckconfig.js
+smilefckeditor / fckeditor / fckconfig.js
 
-Et de modifier le tableau :
+And to modify the table:
 
-FCKConfig.ToolbarSets["Default"]
+FCKConfig.ToolbarSets ["Default"]
 
-Qui correspond à l'ensemble des barres d'outils de fck.
-Les noms des plugins que l'ont peut ajouter sont SmileeZlink et SmileeZimage.
-Il faut décommenter les lignes :
+Corresponding to all toolbars to fck.
+The names of plugins that could add and are SmileeZlink SmileeZimage.
+Uncomment the lines:
 
-//FCKConfig.Plugins.Add('SmileeZlink') ;
-//FCKConfig.Plugins.Add('SmileeZimage') ;
-
-
-Pour effectuer des configurations par critère, on peut modifier le template de l'édition, en précisant le
-fichier de configuration à charger. Ceci se trouve dans le fichier :
-
-smilefckeditor/design/standard/templates/content/datatype/edit/ezhtml.tpl
-
-Et la valeur à changer est :
-
-  oFCKeditor{$attribute.id}.Config["CustomConfigurationsPath"] = "{ezsys('wwwdir')}/extension/smilefckeditor/fckeditor/fckconfig.js" ;	// fichier de configuration js
-
-Que l'on pourrait éventuellement remplacer par :
-
-{if <ma condition>}
-   oFCKeditor{$attribute.id}.Config["CustomConfigurationsPath"] = "{ezsys('wwwdir')}/extension/smilefckeditor/fckeditor/fckconfig1.js" ;	// fichier de configuration js
-{else}
-   oFCKeditor{$attribute.id}.Config["CustomConfigurationsPath"] = "{ezsys('wwwdir')}/extension/smilefckeditor/fckeditor/fckconfig2.js" ;	// fichier de configuration js
-{/if}
+/ / FCKConfig.Plugins.Add ('SmileeZlink');
+/ / FCKConfig.Plugins.Add ('SmileeZimage');
 
 
-ATTENTION
+To make test configurations, we can modify the template editing, specifying the
+configuration file to load. This is in the file:
+
+smilefckeditor / design / standard / templates / content / datatype / edit / ezhtml.tpl
+
+And the value to change is:
+
+  oFCKeditor} {$ attribute.id. Config ["CustomConfigurationsPath"] = "{ezsys ('wwwdir')} / extension / smilefckeditor / fckeditor / fckconfig.js" / / configuration file js
+
+That could possibly replace with:
+
+{If} <ma condition>
+   oFCKeditor} {$ attribute.id. Config ["CustomConfigurationsPath"] = "{ezsys ('wwwdir')} / extension/smilefckeditor/fckeditor/fckconfig1.js" / / configuration file js
+{Else}
+   oFCKeditor} {$ attribute.id. Config ["CustomConfigurationsPath"] = "{ezsys ('wwwdir')} / extension/smilefckeditor/fckeditor/fckconfig2.js" / / configuration file js
+{/ If}
+
+
+CAUTION
 ---------
-Afin que les changements prennent effet, il est recommandé de bien vider et les caches eZpublish et les caches
-du navigateur !
+So that changes take effect, it is recommended to empty caches and caches and eZpublish
+Browser!
+
